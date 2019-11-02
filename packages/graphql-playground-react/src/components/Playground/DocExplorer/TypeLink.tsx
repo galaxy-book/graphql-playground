@@ -131,6 +131,14 @@ class TypeLink extends React.Component<
       ) : (
         type.name
       )
+    let description = false
+    if (
+      this.props.type &&
+      this.props.type.type &&
+      this.props.type.type.description
+    ) {
+      description = this.props.type.type.description
+    }
 
     return (
       <DocsCategoryItem
@@ -163,6 +171,12 @@ class TypeLink extends React.Component<
           </span>
         )}
         <span className="type-name">{renderType(type.type || type)}</span>
+        <span
+          className="field-description"
+          style={{ padding: '6px 6px 6px 16px;' }}
+        >
+          {description}
+        </span>
         {type.defaultValue !== undefined ? (
           <DefaultValue>
             {' '}
